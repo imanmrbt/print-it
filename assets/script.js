@@ -1,4 +1,4 @@
-const slides = [
+let slides = [
 	{
 		"image":"assets/images/slideshow/slide1.jpg",
 		"tagLine":"Impressions tous formats <span>en boutique et en ligne</span>",
@@ -19,3 +19,14 @@ const slides = [
 
 ]
 
+console.log("longueur du tableau : " + slides.length);
+
+let precedant = document.querySelector(".arrow_left");
+let suivant = document.querySelector(".arrow_right")
+
+precedant.addEventListener('click', () => {
+    alert('test listener')
+});
+suivant.addEventListener('click', () => {
+    alert('test listener')
+});
