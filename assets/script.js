@@ -1,32 +1,41 @@
-let slides = [
-	{
-		"image":"assets/images/slideshow/slide1.jpg",
-		"tagLine":"Impressions tous formats <span>en boutique et en ligne</span>",
-	},
-	{
-		"image":"assets/images/slideshow/slide2.jpg",
-		"tagLine":"Tirages haute définition grand format <span>pour vos bureaux et events</span>"
-	},
-	{
-		"image":"assets/images/slideshow/slide3.jpg",
-		"tagLine":"Grand choix de couleurs <span>de CMJN aux pantones</span>"
-	},
-	{
-		"image":"assets/images/slideshow/slide4.png",
-		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
-	}
-	
+let banner__slider = document.getElementsByClassName('banner-img');
 
-]
+let etape = 0;
 
-console.log("longueur du tableau : " + slides.length);
+let nbr__img = banner__slider.length;
 
-let precedant = document.querySelector(".arrow_left");
-let suivant = document.querySelector(".arrow_right")
+let precedant = document.querySelector('.arrow_left');
+let suivant = document.querySelector('.arrow_right');
 
-precedant.addEventListener('click', () => {
-    alert('test listener')
-});
-suivant.addEventListener('click', () => {
-    alert('test listener')
-});
+function enleverActiveImages() {
+    for(let i = 0 ; i < nbr__img ; i++) {
+        banner__slider[i].classList.remove('active');
+    }
+}
+
+suivant.addEventListener('click', function() {
+    etape++;
+    if(etape >= nbr__img) {
+        etape = 0;
+    }
+    enleverActiveImages();
+    banner__slider[etape].classList.add('active');
+})
+
+precedant.addEventListener('click', function() {
+    etape--;
+    if(etape < 0) {
+        etape = nbr__img - 1;
+    }
+    enleverActiveImages();
+    banner__slider[etape].classList.add('active');
+})
+
+setInterval(function() {
+    etape++;
+    if(etape >= nbr__img) {
+        etape = 0;
+    }
+    enleverActiveImages();
+    banner__slider[etape].classList.add('active');
+}, 3000)
